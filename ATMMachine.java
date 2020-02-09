@@ -1,29 +1,41 @@
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.util.Scanner;
 
 public class ATMMachine {
     //global variable for initial amount
-    public static final double init_balance = 1000;
-
+    static final double init_balance = 1000;
     //global variable for current amount/amount update
-    public static double current_amount;
+     static double current_amount;
     //global variable for account number
-    public static int acct_no;
+     static int acct_no;
+   static  Scanner input = new Scanner(System.in);
 
-    public static void main(String[] args) {
+
+   public static void main(String[] args) {
        // accessing the menu
        TopMenu();
 
        //select an input for the menu
         System.out.println("Please select an option: ");
-        Scanner input = new Scanner(System.in);
         int menu_input = input.nextInt();
+
+        if (menu_input == 5)
+           System.out.println();
+        else {
+            while (menu_input != 1) {
+                System.out.println("Please Sign in first!!!");
+                System.out.println("Select 1 to sign in.");
+                menu_input = input.nextInt();
+            }
+        }
 
         switch (menu_input){
             case 1:
                 //SignIn
                 System.out.println("Enter your account number: ");
-                Scanner input1 = new Scanner(System.in);
-                acct_no = input1.nextInt();
+               // Scanner input1 = new Scanner(System.in);
+                acct_no = input.nextInt();
 
                 //assume account numbers are from (0...9)
                 //validate input
@@ -40,7 +52,7 @@ public class ATMMachine {
                     System.out.println("Please select an option: ");
                     menu_input = input.nextInt();
                     System.out.println("Enter your account number: ");
-                    acct_no = input1.nextInt();
+                    acct_no = input.nextInt();
                     counter++;
                 }
         //ACCESS MENU AFTER SIGNING IN
@@ -48,17 +60,9 @@ public class ATMMachine {
 
 
                 break;
-            case 2:
-                //BALANCE OPTION
-            case 3:
-                //DEPOSIT OPTION
-            case 4:
-                //WITHDRAW OPTION
-                System.out.println("Please sign in first.");
-                break;
             case 5:
                 //EXIT OPTION
-                System.out.println("Goodbye");
+                System.out.println("GoodBye.");
                 break;
             default:
                 if (menu_input<1 || menu_input>5)
@@ -72,7 +76,7 @@ public class ATMMachine {
 
 
 
-//Funtions/Methods
+
 
     //This displays The Menu
     public static void TopMenu(){
@@ -93,7 +97,7 @@ public class ATMMachine {
         System.out.println("3.Withdraw");
         System.out.println("4.Exit");
 
-        Scanner input = new Scanner(System.in);
+       // Scanner input = new Scanner(System.in);
         int menu_input = input.nextInt();
 
         switch (menu_input){
@@ -159,7 +163,7 @@ public class ATMMachine {
     public static void Deposit_(){
         //prompt user to enter amount
         System.out.print("Please enter an amount: ");
-        Scanner input = new Scanner(System.in);
+        //Scanner input = new Scanner(System.in);
         int amount = input.nextInt();
 
         //verify if input is positive
@@ -189,7 +193,7 @@ public class ATMMachine {
 
             Bal();
         System.out.println("Enter an amount: ");
-        Scanner input = new Scanner(System.in);
+       // Scanner input = new Scanner(System.in);
         int amount = input.nextInt();
 
 
@@ -200,7 +204,7 @@ public class ATMMachine {
 
     /**exit option for user **/
     public static void exit_(){
-        System.out.println("Goodbye.");
+        System.out.println("GoodBye.");
         System.out.println();
         TopMenu();
     }
