@@ -1,5 +1,5 @@
-# Java-Exercise
-ATM Machine Outline
+# ATM-MACHINE
+ATM Machine Outline (console-based application)
 a. The system should show the following top menu. Write a function that simply displays this menu
 1.Sign in
 2.Balance
